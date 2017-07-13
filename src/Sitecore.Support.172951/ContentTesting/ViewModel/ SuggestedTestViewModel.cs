@@ -2,7 +2,7 @@
 {
   using Sitecore.ContentTesting.ViewModel;
 
-  public class  SuggestedTestViewModel : BaseTestViewModel
+  public class SuggestedTestViewModel : BaseTestViewModel
   {
     public double Potential
     {
@@ -27,5 +27,14 @@
       get;
       set;
     }
+
+    #region AddedCode
+
+    public string ContextSite
+    {
+      get;
+      set;
+    }
+    #endregion
   }
 }

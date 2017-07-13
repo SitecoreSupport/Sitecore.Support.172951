@@ -4,14 +4,19 @@
   using System.Linq;
   using System.Web.Http;
   using System.Web.Http.Results;
+  using Configuration;
   using Data;
   using Data.Items;
+  using Diagnostics;
+  using Links;
   using Sitecore.ContentTesting;
   using Sitecore.ContentTesting.ContentSearch.Models;
   using Sitecore.ContentTesting.Data;
   using Sitecore.ContentTesting.Requests.Controllers;
   using Sitecore.ContentTesting.ViewModel;
+  using Sites;
   using Web.Http.Filters;
+  using SuggestedTestViewModel = ViewModel.SuggestedTestViewModel;
 
   [ValidateHttpAntiForgeryToken, Authorize]
   public class SupportTestsController : ContentTestingControllerBase
@@ -21,7 +26,7 @@
     private readonly IContentTestStore _contentTestStore;
 
     public SupportTestsController() : this(ContentTestingFactory.Instance.ContentTestStore)
-		{
+    {
     }
 
     public SupportTestsController(IContentTestStore contentTestStore)
@@ -47,7 +52,7 @@
         Item item = base.Database.GetItem(suggestedTestSearchResultItem.ItemId);
         if (item != null)
         {
-          list.Add(new SuggestedTestViewModel
+          list.Add(new SuggestedTestViewModel()
           {
             HostPageId = item.ID.ToString(),
             HostPageUri = item.Uri.ToDataUri(),
@@ -55,7 +60,10 @@
             Language = item.Language.Name,
             Impact = suggestedTestSearchResultItem.Impact,
             Potential = suggestedTestSearchResultItem.Potential,
-            Recommendation = suggestedTestSearchResultItem.Recommendation
+            Recommendation = suggestedTestSearchResultItem.Recommendation,
+            #region ModifiedCode
+            ContextSite = ResolveContextSite(item)
+            #endregion
           });
         }
         num++;
@@ -66,5 +74,21 @@
         TotalResults = list.Count<SuggestedTestViewModel>()
       });
     }
+
+    #region AddedCode
+    private string ResolveContextSite(Item item)
+    {
+      SiteContext siteContext = null;
+      siteContext = LinkManager.GetPreviewSiteContext(item);
+      siteContext = (siteContext ?? Factory.GetSite(Settings.Preview.DefaultSite));
+      if (siteContext == null)
+      {
+        Log.Error("Cannot resolve site for suggested test item", this);
+        return string.Empty;
+      }
+      return siteContext.Name;
+    }
+    #endregion
+
   }
 }
