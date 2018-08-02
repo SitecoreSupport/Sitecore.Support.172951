@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,8 +41,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Sitecore.Analytics.Model, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SC.Sitecore.Analytics.Model.8.2.2\lib\Sitecore.Analytics.Model.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sitecore.ContentTesting, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SC.Sitecore.ContentTesting.8.2.2\lib\Sitecore.ContentTesting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.ContentTesting.Intelligence, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SC.Sitecore.ContentTesting.Intelligence.8.2.2\lib\Sitecore.ContentTesting.Intelligence.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.ContentTesting.Model, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SC.Sitecore.ContentTesting.Model.8.2.2\lib\Sitecore.ContentTesting.Model.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel">
@@ -74,10 +87,13 @@
     <Compile Include="ContentTesting\Pipelines\Initialize\ RegisterSupportWebApiRoutes.cs" />
     <Compile Include="ContentTesting\Requests\Controllers\Optimization\SupportTestsController.cs" />
     <Compile Include="ContentTesting\ViewModel\ SuggestedTestViewModel.cs" />
+    <Compile Include="ContentTesting\ViewModel\ExecutedTestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\zzz\Sitecore.Support.172951.config" />
+    <Content Include="sitecore\shell\client\Applications\ContentTesting\Common\lib\EditUtil.js" />
+    <Content Include="sitecore\shell\client\Applications\ContentTesting\Common\lib\ExecutedTestsList.js" />
     <Content Include="sitecore\shell\client\Applications\ContentTesting\Common\lib\SuggestedTestsList.js" />
   </ItemGroup>
   <ItemGroup>

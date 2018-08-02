@@ -17,6 +17,7 @@
         return;
       }
       RouteTable.Routes.MapHttpRoute("Sitecore.SupportContentTesting", Settings.CommandRoutePrefix + "Tests/GetSuggestedTests", new { controller = "SupportTests", action = "GetSuggestedTests" });
+      RouteTable.Routes.MapHttpRoute("Sitecore.SupportContentTestingActiveTest", "sitecore/shell/api/ct/SupportTests/{action}", new { controller = "SupportTests" });
     }
   }
   #endregion
