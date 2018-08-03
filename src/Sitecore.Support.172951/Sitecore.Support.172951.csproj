@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\zzz\Sitecore.Support.172951.config" />
+    <Content Include="sitecore\shell\client\Applications\ContentTesting\Components\DataSource\TestsDataSource\TestsDataSource.js" />
     <Content Include="sitecore\shell\client\Applications\ContentTesting\Common\lib\EditUtil.js" />
     <Content Include="sitecore\shell\client\Applications\ContentTesting\Common\lib\ExecutedTestsList.js" />
     <Content Include="sitecore\shell\client\Applications\ContentTesting\Common\lib\SuggestedTestsList.js" />

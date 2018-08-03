@@ -112,7 +112,7 @@ namespace Sitecore.Support.ContentTesting.Requests.Controllers.Optimization
                 Item item = Database.GetItem(testingSearchResultItem.Uri);
                 if (item != null)
                 {
-                    TestDefinitionItem testDefinitionItem = TestDefinitionItem.Create(item);
+                    TestDefinitionItem testDefinitionItem = TestDefinitionItem.Create(item); 
                     if (testDefinitionItem != null)
                     {
                         Item item2 = (testingSearchResultItem.HostItemUri != null) ? item.Database.GetItem(testingSearchResultItem.HostItemUri) : null;

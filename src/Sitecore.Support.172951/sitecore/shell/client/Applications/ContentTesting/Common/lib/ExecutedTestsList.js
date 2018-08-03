@@ -18,7 +18,7 @@ define(["sitecore", "BindingUtil", "EditUtil", "DataUtil"], function (_sc, bindi
           var hostUri = selected.get("HostPageUri");
            
           /* Added code Patch 172951*/
-            var contextSite = selected.get("ContextSite");
+            var contextSite = selected.get("ContextSite"); 
            /* Added code Patch 172951*/
 
           if (!hostUri || !mod._enableClickEvent) {

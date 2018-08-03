@@ -64,7 +64,7 @@ define(["DataUtil"], function (dataUtil) {
         report: showReport,
         load: load
       });
-      target.location.href = url;
+      target.location.href = url; 
     },
 
     customOpenExperienceEditor: function (uri, device, contextSite) {

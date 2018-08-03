@@ -66,7 +66,7 @@
                   default:
                       throw ("Unknown mode: " + this.get("mode"));
               }
-
+               
               url += "?page=" + this.get("page") + "&pageSize=" + this.get("pageSize");
 
               if (this.get("hostItemId")) {

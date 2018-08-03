@@ -11,7 +11,7 @@
   {
     public virtual void Process(PipelineArgs args)
     {
-      Assert.ArgumentNotNull(args, "args");
+      Assert.ArgumentNotNull(args, "args"); 
       if (!Settings.IsAutomaticContentTestingEnabled)
       {
         return;
